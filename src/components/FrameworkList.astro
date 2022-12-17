@@ -1,0 +1,30 @@
+---
+import { FrameworkInterface, frameworkListMock } from "../interfaces/framework.interface";
+
+const frameworkList: FrameworkInterface[] = frameworkListMock;
+---
+
+<div class="framework-list">
+    {frameworkList.map( framework => <img class={framework.title} alt={framework.title} src={framework.image}/>)}
+</div>
+<style>
+	.framework-list {
+		display: flex;
+	}
+    .framework-list > img {
+        cursor: pointer;
+        width: 2.5rem;
+        height: 2.5rem;
+		padding: 0.5rem;
+    }
+    .framework-list > .solid-js {
+        width: 3.65rem;
+        height: 3.65rem;
+		padding: 0.15rem;
+    }
+    .framework-list > .vue {
+        width: 2rem;
+        height: 2rem;
+		padding: 0.8rem;
+    }
+</style>

@@ -13,5 +13,16 @@
   },
   "dependencies": {
     "astro": "^1.6.15"
+  },
+  "devDependencies": {
+    "@astrojs/react": "^1.2.2",
+    "@astrojs/solid-js": "^1.2.3",
+    "@astrojs/svelte": "^1.0.2",
+    "@astrojs/vue": "^1.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "solid-js": "^1.6.5",
+    "svelte": "^3.55.0",
+    "vue": "^3.2.45"
   }
 }

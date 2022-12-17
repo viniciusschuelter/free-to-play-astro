@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
-import * as api from '../api/free-to-play.service';
+import type { GameInterface } from '../interfaces/game.interface';
+import FrameworkList from '../components/FrameworkList.astro';
 
 const options = {
     method: 'GET',
@@ -16,9 +17,12 @@ const data = await fetch('https://free-to-play-games-database.p.rapidapi.com/api
 
 <Layout title="Welcome to Astro.">
 	<main>
-		<h1>Welcome to <span class="text-gradient">Free to Play</span> games</h1>
+		<div class="main-title">
+			<h1>Welcome to <span class="text-gradient">Free to Play</span> games</h1>
+			<FrameworkList />
+		</div>
 		<ul role="list" class="link-card-grid">
-		    {data.splice(0,10).map( game => <Card game={game} />)}
+		    {data.splice(0,10).map( (game: GameInterface) => <Card game={game} />)}
 		</ul>
 	</main>
 </Layout>
@@ -27,13 +31,18 @@ const data = await fetch('https://free-to-play-games-database.p.rapidapi.com/api
 	main {
 		margin: auto;
 		padding: 1.5rem;
-		max-width: 1440px;
+		max-width: 1320px;
 	}
 	h1 {
 		font-size: 3rem;
 		font-weight: 800;
 		margin: 0;
-		color: #b8b6b4;
+		color: #dfdfdf;
+	}
+	.main-title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 	.text-gradient {
 		background-image: var(--accent-gradient);
