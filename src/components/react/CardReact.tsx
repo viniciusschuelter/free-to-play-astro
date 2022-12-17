@@ -1,4 +1,5 @@
-import { GameInterface } from "../../interfaces/game.interface";
+import React from 'react';
+import type { GameInterface } from "../../interfaces/game.interface";
 
 
 const CardReact = (props: { game: GameInterface }) => {
