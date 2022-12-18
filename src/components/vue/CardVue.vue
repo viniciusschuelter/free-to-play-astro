@@ -1,5 +1,5 @@
 <template>
-    <li className="link-card">
+    <li className="link-card vue">
         <a :href="game.game_url">
             <img :src="game.thumbnail" :alt="game.title" width="100%" />
             <h2>

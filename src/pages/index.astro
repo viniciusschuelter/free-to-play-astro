@@ -5,6 +5,7 @@ import type { GameInterface } from '../interfaces/game.interface';
 import FrameworkList from '../components/FrameworkList.astro';
 import CardReact from '../components/react/CardReact';
 import CardVue from '../components/vue/CardVue.vue';
+import CardSvelte from '../components/svelte/CardSvelte.svelte';
 
 
 const options = {
@@ -25,7 +26,7 @@ const data = await fetch('https://free-to-play-games-database.p.rapidapi.com/api
 			<FrameworkList />
 		</div>
 		<ul role="list" class="link-card-grid">
-		    {data.splice(0,10).map( (game: GameInterface) => <CardVue game={game} />)}
+		    {data.splice(0,10).map( (game: GameInterface) => <CardSvelte game={game} />)}
 		</ul>
 	</main>
 </Layout>
