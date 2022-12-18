@@ -6,6 +6,7 @@ import FrameworkList from '../components/FrameworkList.astro';
 import CardReact from '../components/react/CardReact';
 import CardVue from '../components/vue/CardVue.vue';
 import CardSvelte from '../components/svelte/CardSvelte.svelte';
+import CardSolid from '../components/solid-js/CardSolid';
 
 
 const options = {
@@ -26,7 +27,7 @@ const data = await fetch('https://free-to-play-games-database.p.rapidapi.com/api
 			<FrameworkList />
 		</div>
 		<ul role="list" class="link-card-grid">
-		    {data.splice(0,10).map( (game: GameInterface) => <CardSvelte game={game} />)}
+		    {data.splice(0,10).map( (game: GameInterface) => <CardSolid game={game} />)}
 		</ul>
 	</main>
 </Layout>
