@@ -1,0 +1,34 @@
+---
+import type { GameInterface } from '../interfaces/game.interface';
+import Card from '../components/Card.astro';
+import CardReact from '../components/react/CardReact';
+import CardVue from '../components/vue/CardVue.vue';
+import CardSvelte from '../components/svelte/CardSvelte.svelte';
+import CardSolid from '../components/solid-js/CardSolid';
+import { FrameworkEnum } from '../interfaces/framework.interface';
+
+const games: GameInterface[] = Astro.props.games;
+const framework: FrameworkEnum = Astro.props.framework;
+
+---
+
+<ul role="list" class="link-card-grid">
+    {games.map( (game: GameInterface) => {
+        return {
+            [FrameworkEnum.ASTRO]: <Card game={game} />,
+            [FrameworkEnum.REACT]: <CardReact game={game} />,
+            [FrameworkEnum.SOLID]: <CardSolid game={game} />,
+            [FrameworkEnum.SVELTE]: <CardSvelte game={game} />,
+            [FrameworkEnum.VUE]: <CardVue game={game} />,
+        }[framework]
+    })}
+</ul>
+
+<style>
+	.link-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 1.5rem;
+		padding: 0;
+	}
+</style>

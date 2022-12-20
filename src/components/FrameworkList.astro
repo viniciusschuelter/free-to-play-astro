@@ -1,41 +1,54 @@
 ---
-import { FrameworkInterface, frameworkListMock } from "../interfaces/framework.interface";
+import { FrameworkInterface, frameworkListMock, FrameworkEnum } from "../interfaces/framework.interface";
 
 const frameworkList: FrameworkInterface[] = frameworkListMock;
+const framework: FrameworkEnum = Astro.props.framework;
 ---
 
 <div class="framework-list">
-    {frameworkList.map( framework => <img class={framework.title} alt={framework.title} src={framework.image}/>)}
+    {frameworkList.map( item => {
+        return (
+            <a href={item.framework} class:list={[{ selected: framework === item.framework}]}>
+                <img id={item.framework} class={item.title} alt={item.title} src={item.image} />
+            </a>
+        )
+    })}
 </div>
+    
 <style>
 	.framework-list {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 	}
-    .framework-list > img {
+    .framework-list > a.selected > img {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    .framework-list > a > img {
         cursor: pointer;
         width: 2.5rem;
         height: 2.5rem;
         margin-left: 0.75rem;
+        opacity: 0.4;
     }
-    .framework-list > .solid-js {
+    .framework-list > a > .solid-js {
         width: 3.5rem;
         height: 3.5rem;
     }
-    .framework-list > .svelte {
+    .framework-list > a > .svelte {
         width:2rem;
     }
-    .framework-list > .vue {
+    .framework-list > a > .vue {
         width: 1.8rem;
         height: 2rem;
         margin-left: 1.25rem;
     }
-    .framework-list > .astro {
+    .framework-list > a > .astro {
         width: 3rem;
         height: 3rem;
     }
-    .framework-list > .selected {
+    .framework-list > a > .selected {
         background: #dfdfdf;
         border-radius: 50%;
     }

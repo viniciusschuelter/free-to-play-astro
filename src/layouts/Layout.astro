@@ -24,6 +24,10 @@ const { title } = Astro.props;
 	:root {
 		--accent: 124, 58, 237;
 		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, rgba( 0, 0, 0, 0.1 ));
+		--accent-gradient-react: linear-gradient(45deg, rgb(var(--accent)), #17d8fc 20%, rgba( 0, 0, 0, 0.1 ));
+		--accent-gradient-solid: linear-gradient(45deg, rgb(var(--accent)), #4f87c3 20%, rgba( 0, 0, 0, 0.1 ));
+		--accent-gradient-svelte: linear-gradient(45deg, rgb(var(--accent)), #fe411b 20%, rgba( 0, 0, 0, 0.1 ));
+		--accent-gradient-vue: linear-gradient(45deg, rgb(var(--accent)), #42b987 20%, rgba( 0, 0, 0, 0.1 ));
 	}
 	html {
 		font-family: system-ui, sans-serif;
@@ -46,6 +50,22 @@ const { title } = Astro.props;
 		background-position: 100%;
 		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+		transition: ease-in-out 200ms;
+	}
+	.link-card.react {
+		background-image: var(--accent-gradient-react);
+	}
+	.link-card.solid-js {
+		background-image: var(--accent-gradient-solid);
+	}
+	.link-card.svelte {
+		background-image: var(--accent-gradient-svelte);
+	}
+	.link-card.vue {
+		background-image: var(--accent-gradient-vue);
+	}
+	.link-card:hover {
+		transform: scale(1.05);
 	}
 	.link-card > a {
 		width: 100%;
@@ -55,6 +75,24 @@ const { title } = Astro.props;
 		border-radius: 0.35rem;
 		color: #111;
 		background-color: #16202c;
+	}
+	main {
+		margin: auto;
+		padding: 1.5rem;
+		max-width: 1320px;
+	}
+	h1 {
+		font-size: 3rem;
+		font-weight: 800;
+		margin: 0;
+		color: #dfdfdf;
+	}
+	.main-title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		margin-bottom: 2rem;
 	}
 	h2 {
 		margin: 0;

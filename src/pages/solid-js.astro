@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import FrameworkList from '../components/FrameworkList.astro';
-import { FrameworkEnum } from '../interfaces/framework.interface';
 import Cards from '../components/Cards.astro';
+import { FrameworkEnum } from '../interfaces/framework.interface';
 import { gameList } from '../nanostore/games';
 
 ---
@@ -11,15 +11,15 @@ import { gameList } from '../nanostore/games';
 	<main>
 		<div class="main-title">
 			<h1>Welcome to <span class="text-gradient">Free to Play</span> games</h1>
-			<FrameworkList framework={FrameworkEnum.ASTRO}  />
+			<FrameworkList framework={FrameworkEnum.SOLID}  />
 		</div>
-		<Cards games={gameList.get() || []} framework={FrameworkEnum.ASTRO} />
+		<Cards games={gameList.get() || []}  framework={FrameworkEnum.SOLID} />
 	</main>
 </Layout>
 
 <style>
 	.text-gradient {
-		background-image: var(--accent-gradient);
+		background-image: var(--accent-gradient-solid);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-size: 400%;
