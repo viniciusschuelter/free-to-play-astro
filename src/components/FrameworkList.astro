@@ -8,8 +8,8 @@ const framework: FrameworkEnum = Astro.props.framework;
 <div class="framework-list">
     {frameworkList.map( item => {
         return (
-            <a href={item.framework} class:list={[{ selected: framework === item.framework}]}>
-                <img id={'/'+item.framework} class={item.title} alt={item.title} src={item.image} />
+            <a href={'/' + item.framework} class:list={[{ selected: framework === item.framework}]}>
+                <img id={item.framework} class={item.title} alt={item.title} src={item.image} />
             </a>
         )
     })}
