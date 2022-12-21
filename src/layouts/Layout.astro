@@ -4,7 +4,6 @@ export interface Props {
 }
 
 const { title } = Astro.props;
-
 ---
 
 <!DOCTYPE html>
@@ -23,33 +22,59 @@ const { title } = Astro.props;
 <style is:global>
 	:root {
 		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, rgba( 0, 0, 0, 0.1 ));
-		--accent-gradient-react: linear-gradient(45deg, rgb(var(--accent)), #17d8fc 20%, rgba( 0, 0, 0, 0.1 ));
-		--accent-gradient-solid: linear-gradient(45deg, rgb(var(--accent)), #4f87c3 20%, rgba( 0, 0, 0, 0.1 ));
-		--accent-gradient-svelte: linear-gradient(45deg, rgb(var(--accent)), #fe411b 20%, rgba( 0, 0, 0, 0.1 ));
-		--accent-gradient-vue: linear-gradient(45deg, rgb(var(--accent)), #42b987 20%, rgba( 0, 0, 0, 0.1 ));
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			#da62c4 30%,
+			rgba(0, 0, 0, 0.1)
+		);
+		--accent-gradient-react: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			#17d8fc 20%,
+			rgba(0, 0, 0, 0.1)
+		);
+		--accent-gradient-solid: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			#4f87c3 20%,
+			rgba(0, 0, 0, 0.1)
+		);
+		--accent-gradient-svelte: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			#fe411b 20%,
+			rgba(0, 0, 0, 0.1)
+		);
+		--accent-gradient-vue: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			#42b987 20%,
+			rgba(0, 0, 0, 0.1)
+		);
 	}
 	html {
 		font-family: system-ui, sans-serif;
 	}
 	body {
-		background-color: #1b2838
+		background-color: #1b2838;
 	}
 	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			B
-			itstream Vera Sans Mono, Courier New, monospace;
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+			DejaVu Sans Mono, B itstream Vera Sans Mono, Courier New, monospace;
 	}
 	.link-card {
 		list-style: none;
 		display: flex;
 		padding: 0.15rem;
+		max-width: 420px;
 		background-image: var(--accent-gradient);
 		background-size: 500%;
 		border-radius: 0.5rem;
 		background-position: 100%;
 		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+			0 2px 4px -2px rgba(0, 0, 0, 0.1);
 		transition: ease-in-out 200ms;
 	}
 	.link-card.react {
@@ -79,7 +104,7 @@ const { title } = Astro.props;
 	main {
 		margin: auto;
 		padding: 1.5rem;
-		max-width: 1320px;
+		max-width: 1380px;
 	}
 	h1 {
 		font-size: 3rem;
@@ -92,7 +117,7 @@ const { title } = Astro.props;
 		justify-content: space-between;
 		align-items: center;
 		flex-wrap: wrap;
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
 	}
 	h2 {
 		margin: 0;
@@ -110,5 +135,136 @@ const { title } = Astro.props;
 	}
 	.link-card:is(:hover, :focus-within) h2 {
 		color: rgb(var(--accent));
+	}
+	.dropdown {
+		display: flex;
+		margin-left: auto;
+		position: relative;
+		overflow: hidden;
+		height: 28px;
+		width: 190px;
+		border: 1px solid;
+		border-radius: 3px;
+		-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+		color: #fff;
+	}
+
+	.dropdown:before,
+	.dropdown:after {
+		content: "";
+		position: absolute;
+		z-index: 2;
+		top: 9px;
+		right: 10px;
+		width: 0;
+		height: 0;
+		border: 4px dashed;
+		border-color: #fff transparent;
+		pointer-events: none;
+	}
+
+	.dropdown:before {
+		border-bottom-style: solid;
+		border-top: none;
+	}
+
+	.dropdown:after {
+		margin-top: 7px;
+		border-top-style: solid;
+		border-bottom: none;
+	}
+
+	.dropdown-select {
+		position: relative;
+		width: 130%;
+		margin: 0;
+		padding: 6px 8px 6px 10px;
+		height: 28px;
+		line-height: 14px;
+		font-size: 12px;
+		color: #62717a;
+		text-shadow: 0 1px white;
+		background: #f2f2f2; /* Fallback for IE 8 */
+		background: rgba(
+			0,
+			0,
+			0,
+			0
+		) !important; /* "transparent" doesn't work with Opera */
+		border: 0;
+		border-radius: 0;
+		-webkit-appearance: none;
+	}
+
+	.dropdown-select:focus {
+		z-index: 3;
+		width: 100%;
+		color: #394349;
+		outline: 2px solid #49aff2;
+		outline: 2px solid -webkit-focus-ring-color;
+		outline-offset: -2px;
+	}
+
+	.dropdown-select > option {
+		margin: 3px;
+		padding: 6px 8px;
+		text-shadow: none;
+		background: #f2f2f2;
+		border-radius: 3px;
+		cursor: pointer;
+	}
+
+	.dropdown-dark {
+		background: #273b52;
+    	border-color: #16202b;
+		background-image: -webkit-linear-gradient(
+			top,
+			transparent,
+			rgba(0, 0, 0, 0.4)
+		);
+		background-image: -moz-linear-gradient(
+			top,
+			transparent,
+			rgba(0, 0, 0, 0.4)
+		);
+		background-image: -o-linear-gradient(
+			top,
+			transparent,
+			rgba(0, 0, 0, 0.4)
+		);
+		background-image: linear-gradient(
+			to bottom,
+			transparent,
+			rgba(0, 0, 0, 0.4)
+		);
+		-webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1),
+			0 1px 1px rgba(0, 0, 0, 0.2);
+		box-shadow: inset 0 1px rgba(255, 255, 255, 0.1),
+			0 1px 1px rgba(0, 0, 0, 0.2);
+	}
+
+	.dropdown-dark:before {
+		border-bottom-color: #aaa;
+	}
+
+	.dropdown-dark:after {
+		border-top-color: #aaa;
+	}
+
+	.dropdown-dark .dropdown-select {
+		color: #fff;
+		text-shadow: 0 1px #16202b;
+		background: #223449; /* Fallback for IE 8 */
+    	font-weight: 600;
+	}
+
+	.dropdown-dark .dropdown-select:focus {
+		color: #fff;
+	}
+
+	.dropdown-dark .dropdown-select > option {
+		background: #444;
+		text-shadow: 0 1px rgba(0, 0, 0, 0.4);
 	}
 </style>

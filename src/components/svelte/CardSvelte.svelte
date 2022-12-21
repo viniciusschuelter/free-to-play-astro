@@ -6,7 +6,7 @@
 </script>
 
 
-<li class="link-card svelte">
+<li class="link-card svelte" id={game.genre}>
     <a href={game.game_url}>
         <img src={game.thumbnail} alt={game.title} width="100%" />
         <h2>

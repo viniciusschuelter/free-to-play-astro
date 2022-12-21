@@ -6,11 +6,20 @@ import CardVue from '../components/vue/CardVue.vue';
 import CardSvelte from '../components/svelte/CardSvelte.svelte';
 import CardSolid from '../components/solid-js/CardSolid';
 import { FrameworkEnum } from '../interfaces/framework.interface';
+import { gameCategories } from '../nanostore/games';
 
 const games: GameInterface[] = Astro.props.games;
 const framework: FrameworkEnum = Astro.props.framework;
 
 ---
+
+<select-category>
+    <div class="dropdown dropdown-dark">
+        <select id="selectCategory" class="dropdown-select">
+            {gameCategories?.get().map( (category: string) => <option value={category} label={category} />)}
+        </select>
+    </div>
+</select-category>
 
 <ul role="list" class="link-card-grid">
     {games.map( (game: GameInterface) => {
@@ -23,6 +32,35 @@ const framework: FrameworkEnum = Astro.props.framework;
         }[framework]
     })}
 </ul>
+
+<script>
+    import { selectedCategory } from '../nanostore/games';
+
+    class SelectCategory extends HTMLElement {
+
+        constructor() {
+            super()
+
+            const select: HTMLSelectElement | null = document.querySelector('#selectCategory');
+
+            console.log(document.querySelectorAll('li').forEach)
+
+            select?.addEventListener('click', ({target}) => {
+                const selected = target?.selectedOptions[0]?.value;
+                const category = selectedCategory.get();
+
+                if (selected !== category) {
+                    selectedCategory.set(selected);
+                    document.querySelectorAll('li').forEach( item => {
+                        item.style.display = item.id === selected || selected === 'Select your favorite genre'  ? 'flex' : 'none'
+                    })
+                }
+            });
+        }
+    }
+
+    customElements.define('select-category', SelectCategory);
+</script>
 
 <style>
 	.link-card-grid {

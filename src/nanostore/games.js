@@ -10,6 +10,8 @@ const options = {
 
 const data = await fetch('https://free-to-play-games-database.p.rapidapi.com/api/games', options).then((response) => response.json());
 
-console.log(data.length);
+export const gameCategories = atom([...new Set(['Select your favorite genre', ...data.map( _ => _.genre).sort()])]);
+
+export const selectedCategory = atom(null);
 
 export const gameList = atom(data);
