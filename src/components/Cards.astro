@@ -17,7 +17,7 @@ const framework: FrameworkEnum = Astro.props.framework;
     <div class="dropdown dropdown-dark">
         <select id="selectCategory" class="dropdown-select">
             <optgroup disabled hidden></optgroup>
-            {gameCategories?.get().map( (category: string) => <option value={category} label={category} />)}
+            {gameCategories?.get().map( (category: string) => <option value={category}> {category} </option>)}
         </select>
     </div>
 </select-category>
@@ -44,7 +44,7 @@ const framework: FrameworkEnum = Astro.props.framework;
 
             const select: HTMLSelectElement | null = document.querySelector('#selectCategory');
 
-            select?.addEventListener('click', ({target}) => {
+            select?.addEventListener('select', ({target}) => {
                 const selected = target?.selectedOptions[0]?.value;
                 const category = selectedCategory.get();
 
