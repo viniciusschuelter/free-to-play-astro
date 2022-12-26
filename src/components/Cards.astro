@@ -44,7 +44,8 @@ const framework: FrameworkEnum = Astro.props.framework;
 
             const select: HTMLSelectElement | null = document.querySelector('#selectCategory');
 
-            select?.addEventListener('select', ({target}) => {
+            select?.addEventListener('change', ({target}) => {
+                console.log('here');
                 const selected = target?.selectedOptions[0]?.value;
                 const category = selectedCategory.get();
 
