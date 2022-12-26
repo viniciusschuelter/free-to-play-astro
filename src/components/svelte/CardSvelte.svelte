@@ -1,5 +1,5 @@
 
-<script lang="typescript">
+<script lang="ts">
     import type { GameInterface } from "../../interfaces/game.interface";
 
     export let game: GameInterface;
