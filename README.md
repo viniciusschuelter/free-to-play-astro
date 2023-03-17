@@ -3,7 +3,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f5ab3fd5-f0a7-4235-99f5-aee702babc79/deploy-status)](https://app.netlify.com/sites/freetoplay-astro/deploys)
 
-[Live demo](freetoplay-astro.netlify.app)
+[Live demo](https://freetoplay-astro.netlify.app)
 
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
